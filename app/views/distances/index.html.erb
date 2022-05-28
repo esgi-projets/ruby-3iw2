@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Distances</h1>
+
+<%= form_with scope: "distances", url: get_distance_path, method: :post do |form| %>
+  Calculer mes emissions
+
+  <%= form.label :from_address, "Adresse de départ :" %>
+  <%= form.text_field :from_address %>
+
+  <%= form.label :to_address, "Adresse d'arrivée :" %>
+  <%= form.text_field :to_address %>
+
+  <%= form.submit "Calculer" %>
+<% end %>
