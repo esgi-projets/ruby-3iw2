@@ -1,3 +1,22 @@
+<div>
+<div class="result">
 La distance est de : <%= @distance %> m.
+</div>
 
+<% if @distance < 1000 %>
+ <div class="title">
+Vous parcourez moins d'un kilomètre. L'impact en CO2 est moindre car le trajet est possible à pied ou en vélo.
+</div>
+<% else 
+  @distance = @distance / 1000
+ end %>
+
+<div class="title">
+<%= link_to 'Calculer pour un trajet en voiture', :get_co2 %>
+</div>
+
+
+<div class="title">
 <%= link_to 'Calculer pour un autre itinéraire', :back %>
+</div>
+</div>

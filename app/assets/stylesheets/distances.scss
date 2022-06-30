@@ -1,3 +1,103 @@
 // Place all the styles related to the Distances controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import 'reset';
+@import 'colors';
+@import 'inputs';
+
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: $color-dark;
+  font-size: 2.5em;
+  font-weight: bold;
+  padding: 1rem;
+  line-height: 1em;
+}
+
+h2 {
+  text-align: center;
+  color: $color-dark;
+  font-size: 2em;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form {
+  color: $color-gray;
+  font-size: 1.2em;
+  padding-top: 3rem;
+
+}
+
+.input {
+  display: block;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.button {
+  display: inline-block;
+  margin: 1rem;
+  color: $color-white;
+  //background-color: $color-lightgrey;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 1em;
+  width: 90%;
+
+  &:hover {
+    background-color: $color-lightgrey--600;
+  }
+}
+
+.title {
+  color: $color-dark;
+  font-size: 1.2em;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.result {
+  color: $color-dark;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+}
+
+.departure {
+  color: $color-success;
+}
+
+.arrival {
+  color: $color-error;
+}
