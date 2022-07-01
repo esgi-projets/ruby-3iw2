@@ -1,23 +1,18 @@
-class CO2Controller < ApplicationController
-  
+require "httparty"
 
+class Co2Controller < ApplicationController
+  include HTTParty
+  base_uri 'api.monimpacttransport.fr/beta'
 
-  def get_co2
-    const axios = require('axios');
+  def get_co2_car
+    @distance = co2_params[:distance]
+    @options = { query: { km: @distance }, format: :plain }
+    @co2 = self.class.get('/getEmissionsPerDistance', @options).parsed_response
+    @co2 = JSON.parse @co2, symbolize_names: true
+    @co2 = @co2.select { |k, v| k[:name] == 'Voiture (thermique)'}.first[:emissions][:kgco2e]
+  end
 
-    axios.get('https://api.monimpacttransport.fr/beta/getEmissionsPerDistance', {
-    params: {
-      km: @distance
-    }
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .then(function () {
-    
-  });  
+  def co2_params
+    params.require(:co2).permit(:distance)
   end
 end

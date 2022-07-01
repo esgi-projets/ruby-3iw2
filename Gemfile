@@ -56,3 +56,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'google_distance_matrix'
 gem 'figaro'
+gem 'httparty'
