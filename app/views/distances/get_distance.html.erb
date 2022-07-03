@@ -1,19 +1,94 @@
 <div>
-<div class="result">
-La distance est de : <%= @distance %> m.
-</div>
 
-<% if @distance < 1000 %>
- <div class="title">
-Vous parcourez moins d'un kilomètre. L'impact en CO2 est moindre car le trajet est possible à pied ou en vélo.
-</div>
-<% else 
-  @distance = @distance / 1000
- end %>
+
+<% @distance = @distance.to_f / 1000 %>
+  <div class="result">
+    La distance est de : <%= @distance %> km.
+  </div>
+
+<% if @distance < 10 %>
+<div class="title">
+    Vous parcourez moins de 10 kilomètres.<br>
+    Vous pouvez envisager de faire ce trajet à pied ou en vélo mécanique.<br>
+    L'impact en CO2 sera donc nul.<br>
+  </div>
+<% end %>
 
 <div class="title">
-<%= link_to 'Calculer pour un trajet en voiture', :get_co2_car %>
+<%= form_with scope: "distances", url: get_co2_car_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en voiture" %>
+<% end %>
 </div>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_moto_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en moto" %>
+<% end %>
+</div>
+
+<% if @distance < 15 %>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_metro_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en métro" %>
+<% end %>
+</div>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_bus_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en bus" %>
+<% end %>
+</div>
+
+<% end %>
+
+<% if @distance > 10 && @distance < 100 %>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_rer_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en RER/Transilien" %>
+<% end %>
+</div>
+
+<% end %>
+
+<% if @distance > 30 %>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_intercites_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en Intercités" %>
+<% end %>
+</div>
+
+<% end %>
+
+<% if @distance > 150 %>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_train_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en train" %>
+<% end %>
+</div>
+
+<% end %>
+
+<% if @distance > 400 %>
+
+<div class="title">
+<%= form_with scope: "distances", url: get_co2_plane_path, method: :post do |form| %>
+<%= hidden_field_tag 'distance', @distance %>
+  <%= form.submit "Calculer pour la consommation en avion" %>
+<% end %>
+</div>
+
+<% end %>
 
 
 <div class="title">
