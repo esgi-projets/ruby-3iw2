@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Bienvenue sur notre calculateur d'émissions de CO2, selon votre moyen de transport</h1>
+<div class="center">
+
+
+<div class="form">
+<%= form_with scope: "distances", url: get_distance_path, method: :post do |form| %>
+  <div class="title">
+  Calculer la distance parcourue
+  </div>
+
+  <div class="input">
+  <%= form.label :from_address, "Adresse de départ :" %>
+  <%= form.text_field :from_address %>
+  </div>
+
+  <div class="input">
+  <%= form.label :to_address, "Adresse d'arrivée :" %>
+  <%= form.text_field :to_address %>
+  </div>
+  <div class="button">
+  <%= form.submit "Calculer" %>
+</div>
+<% end %>
+
+</div>
+</div>
+</div>
