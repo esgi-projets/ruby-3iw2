@@ -1,5 +1,7 @@
 # RUBY-3iw2
 
+### Nous avons choisi le **sujet 2**
+
 L'objectif est de réaliser une application Ruby on Rails par équipe de 2 ou 3.
 
 
